@@ -12,6 +12,14 @@ class AnimalsController < ApplicationController
   def show
   end
 
+  def search
+    if params[:q].blank?
+     'Please input search word'
+    else
+      @animal = Animal.where("species LIKE ?", "%" + params[:q] + "%")
+    end 
+  end 
+
   # GET /animals/new
   def new
     @animal = Animal.new
