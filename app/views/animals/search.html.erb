@@ -4,7 +4,9 @@
       <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
     </form>
-
+<% if @animal.blank? %>
+ 		 <%= "Such animal can't be found" %>
+<% else %>
 <div class="row">
   <div class="col-9">
     <table class="table table-bordered table-hover">
@@ -17,9 +19,6 @@
         </tr>
       </thead>
       <tbody>
-      	<% if @animal.blank? %>
- 		 <%= "Such animal can't be found" %>
-		<% else %>
 		 <tr>
  		 <% @animal.each do |animal| %>
  		   <td><%= animal.species %></td>
