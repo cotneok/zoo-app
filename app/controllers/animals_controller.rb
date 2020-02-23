@@ -16,7 +16,7 @@ class AnimalsController < ApplicationController
     if params[:q].blank?
      flash[:notice] = 'Please input search word'
     else
-      @animal = Animal.where("species LIKE ?", "%" + params[:q] + "%")
+      @animal = Animal.where("lower(species) LIKE lower(?)", "%" + params[:q] + "%")
     end 
   end 
 
